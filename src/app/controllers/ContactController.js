@@ -3,7 +3,8 @@ const ContacstRepository = require('../repositories/ContactsRepository');
 class ContactController {
   async index(request, response) {
     // Listar todos os registros
-    const contacts = await ContacstRepository.findAll();
+    const { orderBy } = request.query;
+    const contacts = await ContacstRepository.findAll(orderBy);
     response.json(contacts);
   }
 
